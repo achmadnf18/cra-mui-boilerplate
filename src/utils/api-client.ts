@@ -1,0 +1,17 @@
+/* eslint-disable import/default */
+import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import axios from 'axios';
+import { BASE_API } from 'config/constants';
+import fetch from 'isomorphic-unfetch';
+
+export const client = axios.create({
+  baseURL: BASE_API,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+export const rtkClient = fetchBaseQuery({
+  baseUrl: BASE_API,
+  fetchFn: fetch,
+});
